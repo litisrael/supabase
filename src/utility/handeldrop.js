@@ -8,6 +8,7 @@ export const handleDrop = async (files) => {
     return;
   }
 
+  
   // Comprobar si es un archivo CSV
   if (!selectedFile.type || !selectedFile.type.includes("csv")) {
     console.error("El archivo seleccionado no es un archivo CSV.");

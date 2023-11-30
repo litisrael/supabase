@@ -11,14 +11,14 @@ export const createDropDay = async () => {
    
         const dataToInsert = await handleDrop(input.files);
     
-    //  console.log("dataToInsert",dataToInsert);
+     console.log("dataToInsert",dataToInsert);
         if (!dataToInsert){  console.error("No hay datos válidos para insertar.");
         return;}
       
        
   
         const { data, error } = await supabase
-          .from("amazon_reports")
+          .from("spapi_allOrders")
           .insert(dataToInsert)
         .select()
   
