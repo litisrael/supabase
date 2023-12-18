@@ -1,4 +1,5 @@
 import { csvToJs } from "./cvsToJs.js";
+import { determineTypeReportDay } from "./determineTypeReportDay.js";
 
 export const handleDrop = async (files) => {
   const selectedFile = files[0];
@@ -27,10 +28,11 @@ export const handleDrop = async (files) => {
 
       reader.onload = () => {
         const csvData = reader.result;
-        const jsonData = csvToJs(csvData);
-
-   
-        resolve(jsonData);
+        const dataJs = csvToJs(csvData);
+        const dataJsToTypes = determineTypeReportDay(dataJs)
+ console.log("dataJsToTypes",dataJsToTypes);
+  
+        resolve(dataJsToTypes);
       };
 
       // Leer el archivo como texto

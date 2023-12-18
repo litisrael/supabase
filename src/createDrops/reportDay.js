@@ -19,7 +19,7 @@ export const createDropDay = async () => {
   
         const { data, error } = await supabase
           .from("spapi_allOrders")
-          .insert(dataToInsert)
+          .upsert(dataToInsert)
         .select()
   
         if (error) {
