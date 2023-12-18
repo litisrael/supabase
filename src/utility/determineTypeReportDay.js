@@ -12,6 +12,7 @@ export function determineTypeReportDay(table) {
 
     
     
+    
     currentOrder.item_price = parseToFloatOrNull(currentOrder.item_price);
     currentOrder.item_tax = parseToFloatOrNull(currentOrder.item_tax);
     currentOrder.shipping_price = parseToFloatOrNull(currentOrder.shipping_price);
