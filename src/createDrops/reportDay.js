@@ -14,19 +14,23 @@ export const createDropDay = async () => {
      console.log("dataToInsert",dataToInsert);
         if (!dataToInsert){  console.error("No hay datos válidos para insertar.");
         return;}
-      
+      for (let i = 0 ; i < dataToInsert.length ; i++){
+        const { data, error } = await supabase
+        .from("spapi_allOrders")
+        .upsert(dataToInsert[i])
+      .select()
+
+      if (error) {
+          console.error('Error al insertar datos en Supabase:', error.message);
+        } else {
+          console.log('Inserción exitosa en Supabase. Registros insertados:', data);
+        }
+        
+      }
        
   
-        const { data, error } = await supabase
-          .from("spapi_allOrders")
-          .upsert(dataToInsert)
-        .select()
-  
-        if (error) {
-            console.error('Error al insertar datos en Supabase:', error.message);
-          } else {
-            console.log('Inserción exitosa en Supabase. Registros insertados:', data);
-          }
+      
+console.log("termine")
 
 });
 };

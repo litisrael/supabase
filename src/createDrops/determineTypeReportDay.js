@@ -7,7 +7,8 @@ export function determineTypeReportDay(table) {
     currentOrder.month = parsearMonth(currentOrder.purchase_date);
 
     currentOrder.quantity = parseInt(currentOrder.quantity);
-    
+    currentOrder.currency = currentOrder.currency === "" ? null : currentOrder.currency;
+    currentOrder.ship_country =  currentOrder.ship_country === "" ? null :currentOrder.ship_country
     const parseToFloatOrNull = (value) => (value.trim() !== '') ? parseFloat(value) : null;
     currentOrder.item_price = parseToFloatOrNull(currentOrder.item_price);
     currentOrder.item_tax = parseToFloatOrNull(currentOrder.item_tax);
@@ -23,13 +24,12 @@ export function determineTypeReportDay(table) {
     // Convierte a booleano si la cadena es 'true' o 'false', de lo contrario, déjalo como está.
     currentOrder.is_business_order = (currentOrder.is_business_order.toLowerCase().trim() === 'true') ? true : (currentOrder.is_business_order.toLowerCase().trim() === 'false') ? false : currentOrder.is_business_order;
 
-    console.log("type bool", typeof currentOrder.is_business_order);
-
+ 
 
   }
 
 
-  console.log(table);
+
   return table;
 }
 

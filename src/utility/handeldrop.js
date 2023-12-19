@@ -1,5 +1,5 @@
 import { csvToJs } from "./cvsToJs.js";
-import { determineTypeReportDay } from "./determineTypeReportDay.js";
+import { determineTypeReportDay } from "../createDrops/determineTypeReportDay.js";
 
 export const handleDrop = async (files) => {
   const selectedFile = files[0];
