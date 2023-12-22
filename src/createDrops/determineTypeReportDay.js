@@ -1,5 +1,6 @@
 
 export function determineTypeReportDay(table) {
+   const dataMappedById ={}
   for (let line = 0; line < table.length; line++) {
     const currentOrder = table[line];
     currentOrder.id = `${currentOrder.amazon_order_id}${currentOrder.sku}`;
@@ -24,13 +25,13 @@ export function determineTypeReportDay(table) {
     // Convierte a booleano si la cadena es 'true' o 'false', de lo contrario, déjalo como está.
     currentOrder.is_business_order = (currentOrder.is_business_order.toLowerCase().trim() === 'true') ? true : (currentOrder.is_business_order.toLowerCase().trim() === 'false') ? false : currentOrder.is_business_order;
 
- 
+    dataMappedById[table[line].id] = table[line]
 
   }
 
 
 
-  return table;
+  return Object.values(dataMappedById);
 }
 
 function parsearDay(fechaString) {
